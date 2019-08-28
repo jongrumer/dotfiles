@@ -1,5 +1,4 @@
-# dotfiles
-Repo with config files for Linux/MacOS.
+Repo with configuration (dot-files) files for Linux/MacOS.
 
 To avoid symlinking it's advantageous to use the bare repository strategy (from [1]):
 
