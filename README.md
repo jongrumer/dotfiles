@@ -1,6 +1,6 @@
 Repo with configuration (dot-files) files for Linux/MacOS.
 
-To avoid symlinking it's advantageous to use the bare repository strategy (from [1]):
+To avoid symlinking it's advantageous to use the bare repository strategy (from [[1]](https://www.atlassian.com/git/tutorials/dotfiles)):
 
 In `$HOME`, run
 ```bash
