@@ -2,9 +2,7 @@
 
 Configuration (dot-files) files for GNU/Linux or MacOS.
 
-To avoid symlinking it's advantageous to use the bare repository strategy (from [[1]](https://www.atlassian.com/git/tutorials/dotfiles)):
-
-A basic setup can be carried out as follows:
+To avoid symlinking it's advantageous to use the bare repository strategy (from [[1]](https://www.atlassian.com/git/tutorials/dotfiles)). A basic setup can be carried out as follows:
 ```bash
 git init --bare $HOME/.cfg
 alias githome='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
