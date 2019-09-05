@@ -1,2 +1,5 @@
-set craction = 1
+set autocalc
 set numeric
+set numeric_decimal=0
+set overlap
+set xlsx_readformulas
