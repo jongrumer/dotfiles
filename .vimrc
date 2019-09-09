@@ -6,9 +6,7 @@ colorscheme gruvbox
 set number
 
 set tabstop=3 softtabstop=0 expandtab shiftwidth=3 smarttab
-
 set hlsearch
-
 set cursorline
 
 

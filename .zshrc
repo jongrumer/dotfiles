@@ -11,10 +11,11 @@ DUO="$HOME/Codes/apps/Duo"
 X2DHF="$HOME/Codes/apps/x2dhf/bin"
 WIGXJPF="$HOME/Codes/libs/wigxjpf-1.9/bin"
 XUVTOP="$HOME/Codes/apps/chianti/dbase"
+SPHF="$HOME/Codes/apps/SPHF/src/bin"
 export SUMO_DIR="$HOME/Codes/apps/SUMO"
 
 # Export main PATH
-export PATH=$SUMO_DIR:$WIGXJPF:$X2DHF:$DUO:$GRASP:$ANACONDA:$GRASPTOOLS:$HOME/Codes/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$HOME/.local/bin:$PATH
+export PATH=$SPHF:$SUMO_DIR:$WIGXJPF:$X2DHF:$DUO:$GRASP:$ANACONDA:$GRASPTOOLS:$HOME/Codes/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$HOME/.local/bin:$PATH
 
 # Python
 export PYTHONPATH=$WIGXJPF/pywigxjpf:$ANACONDA/python:$PYTHONPATH
@@ -129,7 +130,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-9
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -160,17 +161,17 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 # Make mac use GNU compilers installed with Brew - e.g. to support openmp
-export CC=/usr/local/bin/gcc-8
-export CXX=/usr/local/bin/gcc-8
-export CPP=/usr/local/bin/cpp-8
-export LD=/usr/local/bin/gcc-8
+export CC=/usr/local/bin/gcc-9
+export CXX=/usr/local/bin/gcc-9
+export CPP=/usr/local/bin/cpp-9
+export LD=/usr/local/bin/gcc-9
 
-alias gcc='gcc-8'
-alias cc='gcc-8'
-alias g++='g++-8'
-alias c++='c++-8'
-alias cpp='cpp-8'
-alias ld='gcc-8'
+alias gcc='gcc-9'
+alias cc='gcc-9'
+alias g++='g++-9'
+alias c++='c++-9'
+alias cpp='cpp-9'
+alias ld='gcc-9'
 
 # Alias for git command specialized to track files of choice (dot-files) in $HOME
    # Make sure:
