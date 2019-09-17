@@ -8,6 +8,12 @@ export ZSH=$HOME/.oh-my-zsh
 # OS Specific PATHS
 # -----------------
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
+   # === GRASP
+   GRASP="$USER/bin/grasp/bin"
+   GRASPTOOLS="$USER/bin/grasptools"
+   # === Export main PATH
+   PATH="$GRASP:$GRASPTOOLS:$PATH"
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then
    # === General
    GRASP="$HOME/Codes/apps/grasp/bin"
@@ -18,12 +24,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
    SPHF="$HOME/Codes/apps/SPHF/src/bin"
    WIGXJPF="$HOME/Codes/libs/wigxjpf-1.9/bin"
    ANACONDA="$HOME/anaconda3/bin"
-   # === Manuals
-   export MANPATH=/opt/local/share/man:$MANPATH
    # === SUMO
    export SUMO_DIR="$HOME/Codes/apps/SUMO"
    source $SUMO_DIR/sumo_compilervars.sh gfortran
-   # Export main PATH
+   # === Export main PATH
    export PATH=$SPHF:$SUMO_DIR:$WIGXJPF:$X2DHF:$DUO:$GRASP:$ANACONDA:$GRASPTOOLS:$HOME/Codes/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$HOME/.local/bin:$PATH
    # === Python (Anaconda)
    export PYTHONPATH=$WIGXJPF/pywigxjpf:$ANACONDA/python:$PYTHONPATH
@@ -44,6 +48,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
    alias c++='c++-9'
    alias cpp='cpp-9'
    alias ld='gcc-9'
+   # === Manuals (Mac OS trick)
+   export MANPATH=/opt/local/share/man:$MANPATH
 fi
 
 
@@ -71,20 +77,20 @@ HIST_STAMPS="yyyy-mm-dd"  # Time formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
    # === GNU/Linux
    plugins=(
-      git
-      colored-man-pages
-      extract
-      zsh-syntax-highlighting
+   git
+   colored-man-pages
+   extract
+   zsh-syntax-highlighting
    )
    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 elif [[ "$OSTYPE" == "darwin"* ]]; then
    # === Mac OS
    plugins=(
-      osx
-      git
-      colored-man-pages
-      extract
-      zsh-syntax-highlighting
+   osx
+   git
+   colored-man-pages
+   extract
+   zsh-syntax-highlighting
    )
    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
@@ -94,11 +100,16 @@ source $ZSH/oh-my-zsh.sh
 # Default editor
 # --------------
 if [[ -n $SSH_CONNECTION ]]; then
-   # for local sessions
+   # For local sessions
+   # === Editor
    export EDITOR='nvim'
 else
    # for remote sessions
-   export EDITOR='nvim'
+   # === Editor
+   export EDITOR='nvim'    # nvim
+   # === No hangups (nohup + disown     )
+   setopt NO_HUP
+   setopt NO_CHECK_JOBS
 fi
 
 # SSH
@@ -116,7 +127,9 @@ if type nvim > /dev/null 2>&1; then
    alias vim='nvim'
    alias vi='nvim'
 fi
-alias diff="colordiff"
+
+alias diff="colordiff"   # use colored diff's
+alias python=python3     # make sure python points to python3
 
 # GITHOME - dotfile tracking
 # --------------------------

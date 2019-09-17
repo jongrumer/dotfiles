@@ -1,25 +1,45 @@
+"
 " NeoVim Config File
 "
 " Autoinstall Plug
 " ================
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
    silent !curl -fLo '~/.local/share/nvim/site/autoload/plug.vim' --create-dir \
-    'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+   'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Plugins
 " =======
 call plug#begin('$HOME/.local/share//nvim/plugged')
 
-   Plug 'morhetz/gruvbox'                   " Color schemes
-   Plug 'vim-airline/vim-airline'           " Airline status bar
-   Plug 'vim-airline/vim-airline-themes'    " Airline themes
-   Plug 'sheerun/vim-polyglot'              " Language packs
-   Plug 'airblade/vim-gitgutter'            " Git
-   Plug 'rhysd/clever-f.vim'                " Clever f F t T commands
+Plug 'morhetz/gruvbox'                   " Color schemes
+Plug 'vim-airline/vim-airline'           " Airline status bar
+Plug 'vim-airline/vim-airline-themes'    " Airline themes
+Plug 'sheerun/vim-polyglot'              " Language packs
+Plug 'airblade/vim-gitgutter'            " Git
+Plug 'rhysd/clever-f.vim'                " Clever f F t T commands
+Plug 'chriskempson/base16-vim'           " UI related
+Plug 'Yggdroot/indentLine'               " Better Visual Guide
+Plug 'dense-analysis/ale'                " syntax checking [https://github.com/dense-analysis/ale]
+Plug 'ncm2/ncm2'                         " Autocomplete (Python only?)
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-jedi'
+Plug 'Chiel92/vim-autoformat'            " Formater
 
 call plug#end()
+
+" Ale setup
+" =========
+" First, make sure: pip3 install jedi flake8 autopep8
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_linters = {'python': ['flake8']}
 
 " Looks
 " =====
@@ -33,14 +53,33 @@ set termguicolors                            " Allow for 32-bit colors
 " ======
 syntax on                                    " Syntax highlighting
 filetype plugin indent on
+
 set number                                   " Line numbers
+"set relativenumber
 set cursorline                               " Cursor line
+
 set tabstop=3                                " Tab behaviour
 set softtabstop=0                            "     -
 set expandtab                                "     -
 set shiftwidth=3                             "     -
 set smarttab                                 "     -
-set mouse=a                                  " Enable mouse
+
+"set mouse=a                                  " Enable mouse
+
+set hidden
+set noshowmode
+set noshowmatch
+set nolazyredraw
+
+" Turn off backup
+set nobackup
+set noswapfile
+set nowritebackup
+
+" Search configuration
+set ignorecase                    " ignore case when searching
+set smartcase                     " turn on smartcase
+
 let mapleader=","                            " Set <leader>
 
 " Vim Behaviour
@@ -59,6 +98,7 @@ autocmd Filetype fortran setlocal formatprg=fprettify\ --silent
 
 " Leader remaps
 " =============
+noremap <leader>a :Autoformat<CR>
 " Format whole file (uses fprettify for Fortran, see below)
 nnoremap <leader>f gggqG
 " Indent whole file
@@ -83,11 +123,11 @@ noremap <Space> i<Space><Esc>l
 " Return to same line when file is reopened
 " =========================================
 augroup line_return
-    au!
-    au BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \     execute 'normal! g`"zvzz' |
-        \ endif
+   au!
+   au BufReadPost *
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \     execute 'normal! g`"zvzz' |
+            \ endif
 augroup END
 
 " Trailing whitespaces
