@@ -20,7 +20,7 @@ Plug 'sheerun/vim-polyglot'              " Language packs
 Plug 'airblade/vim-gitgutter'            " Git
 Plug 'rhysd/clever-f.vim'                " Clever f F t T commands
 Plug 'chriskempson/base16-vim'           " UI related
-Plug 'Yggdroot/indentLine'               " Better Visual Guide
+"Plug 'Yggdroot/indentLine'               " Better Visual Guide
 Plug 'dense-analysis/ale'                " syntax checking [https://github.com/dense-analysis/ale]
 Plug 'ncm2/ncm2'                         " Autocomplete (Python only?)
 Plug 'roxma/nvim-yarp'
