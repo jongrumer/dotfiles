@@ -14,6 +14,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
    # === Export main PATH
    PATH="$GRASP:$GRASPTOOLS:$PATH"
 
+   # GPG
+   export GPG_TTY=$(tty)
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then
    # === General
    GRASP="$HOME/Codes/apps/grasp/bin"
