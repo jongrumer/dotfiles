@@ -18,21 +18,30 @@ Plug 'vim-airline/vim-airline'           " Airline status bar
 Plug 'vim-airline/vim-airline-themes'    " Airline themes
 Plug 'sheerun/vim-polyglot'              " Language packs
 Plug 'airblade/vim-gitgutter'            " Git
-Plug 'rhysd/clever-f.vim'                " Clever f F t T commands
 Plug 'chriskempson/base16-vim'           " UI related
-"Plug 'Yggdroot/indentLine'               " Better Visual Guide
-Plug 'dense-analysis/ale'                " syntax checking [https://github.com/dense-analysis/ale]
-Plug 'ncm2/ncm2'                         " Autocomplete (Python only?)
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-jedi'
+Plug 'dense-analysis/ale'                " Syntax checking
 Plug 'Chiel92/vim-autoformat'            " Formater
+Plug 'rudrab/vimf90'                     " General fortran stuff
+Plug 'SirVer/ultisnips'                  " Dependency to vimf90
+
+"Plug 'neoclide/coc.nvim', {'branch': 'release'} " Completion framework and language server client
+
+" Not sure about these, for Python
+"Plug 'ncm2/ncm2'                         " Autocomplete (Python only?)
+"Plug 'ncm2/ncm2-bufword'
+"Plug 'ncm2/ncm2-path'
+"Plug 'ncm2/ncm2-jedi'
+"Plug 'roxma/nvim-yarp'
 
 call plug#end()
 
 " Ale setup
 " =========
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace']
+\}
+" Set this variable to 1 to fix files when you save them.
+let g:ale_fix_on_save = 1
 " First, make sure: pip3 install jedi flake8 autopep8
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
@@ -88,18 +97,36 @@ let g:clever_f_across_no_line = 1
 
 " Fortran
 " =======
-" Shift+f to switch between fixed and free form
-nmap <S-F> :set syntax=fortran<CR>:let b:fortran_fixed_source=!b:fortran_fixed_source<CR>:set syntax=text<CR>:set syntax=fortran<CR>
-" Ctrl+f to autmatically detect source
-nmap <C-F> :filetype detect<CR>
+" VimF90 Plug leader
+" let g:VimF90Leader = ','
+
 " Set gq command to use fprettify to reformat paragraphs [https://pypi.org/project/fprettify]
 " Use <leader>f below to format whole file
-autocmd Filetype fortran setlocal formatprg=fprettify\ --silent
+autocmd Filetype fortran setlocal formatprg="fprettify\ --silent"
+
+" Fortran Language Server
+" General: https://github.com/hansec/fortran-language-server
+" NeoVim:  https://github.com/hansec/fortran-language-server/wiki/Using-forts-with-vim
+let g:LanguageClient_serverCommands = {
+    \   'fortran': ['fortls', '--symbol_skip_mem', '--incrmental_sync', '--autocomplete_no_prefix']
+    \ }
+
+" Shift+f to switch between fixed and free form
+nmap <S-F> :set syntax=fortran<CR>:let b:fortran_fixed_source=!b:fortran_fixed_source<CR>:set syntax=text<CR>:set syntax=fortran<CR>
+
+" Python
+" ======
+autocmd FileType python setlocal shiftwidth=3 softtabstop=3 expandtab
+
+" General remaps
+" ==============
+" Ctrl+f to autmatically detect source
+nmap <C-F> :filetype detect<CR>
 
 " Leader remaps
 " =============
 noremap <leader>a :Autoformat<CR>
-" Format whole file (uses fprettify for Fortran, see below)
+" Format whole file (uses fprettify for Fortran)
 nnoremap <leader>f gggqG
 " Indent whole file
 nnoremap <leader>i gg=G
