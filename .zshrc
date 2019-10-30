@@ -19,6 +19,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
    # === General
+   JULIA="/Applications/Julia-1.2.app/Contents/Resources/julia/bin/"
+   ATSPbook="$HOME/Drive/Forskning/Programs/bookcodes/atsp/bin"
    GRASP="$HOME/Codes/apps/grasp/bin"
    GRASPTOOLS="$HOME/Codes/apps/grasptools"
    DUO="$HOME/Codes/apps/Duo"
@@ -31,7 +33,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
    export SUMO_DIR="$HOME/Codes/apps/SUMO"
    source $SUMO_DIR/sumo_compilervars.sh gfortran
    # === Export main PATH
-   export PATH=$SPHF:$SUMO_DIR:$WIGXJPF:$X2DHF:$DUO:$GRASP:$ANACONDA:$GRASPTOOLS:$HOME/Codes/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$HOME/.local/bin:$PATH
+   export PATH=$JULIA:$ATSPbook:$SPHF:$SUMO_DIR:$WIGXJPF:$X2DHF:$DUO:$GRASP:$ANACONDA:$GRASPTOOLS:$HOME/Codes/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$HOME/.local/bin:$PATH
    # === Python (Anaconda)
    export PYTHONPATH=$WIGXJPF/pywigxjpf:$ANACONDA/python:$PYTHONPATH
    # === Intel Compiler Env. Vars
@@ -58,8 +60,8 @@ fi
 
 # Itermplot
 # ---------
-export MPLBACKEND="module://itermplot" # Export for terminal plotting (https://github.com/daleroberts/itermplot)
-export ITERMPLOT=rv                    # Reverse video setting for dark background (itermplot) plots
+#export MPLBACKEND="module://itermplot" # Export for terminal plotting (https://github.com/daleroberts/itermplot)
+#export ITERMPLOT=rv                    # Reverse video setting for dark background (itermplot) plots
 
 # General ZSH settings
 # --------------------
