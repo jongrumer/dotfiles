@@ -20,7 +20,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
    # === General
    JULIA="/Applications/Julia-1.2.app/Contents/Resources/julia/bin/"
-   ATSPbook="$HOME/Drive/Forskning/Programs/bookcodes/atsp/bin"
+   GENCLnew="$HOME/Codes/apps/gencl/bin"
+   ATSPbook="$GENCLnew:$HOME/Codes/apps/atsp_bookcodes/bin"
    GRASP="$HOME/Codes/apps/grasp/bin"
    GRASPTOOLS="$HOME/Codes/apps/grasptools"
    DUO="$HOME/Codes/apps/Duo"
@@ -29,11 +30,14 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
    SPHF="$HOME/Codes/apps/SPHF/src/bin"
    WIGXJPF="$HOME/Codes/libs/wigxjpf-1.9/bin"
    ANACONDA="$HOME/anaconda3/bin"
+   # === plusfort / spag
+   PFDIR=/opt/plusfort_MacOS_725
+   export PFDIR
    # === SUMO
    export SUMO_DIR="$HOME/Codes/apps/SUMO"
    source $SUMO_DIR/sumo_compilervars.sh gfortran
    # === Export main PATH
-   export PATH=$JULIA:$ATSPbook:$SPHF:$SUMO_DIR:$WIGXJPF:$X2DHF:$DUO:$GRASP:$ANACONDA:$GRASPTOOLS:$HOME/Codes/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$HOME/.local/bin:$PATH
+   export PATH=$PFDIR:$JULIA:$ATSPbook:$SPHF:$SUMO_DIR:$WIGXJPF:$X2DHF:$DUO:$GRASP:$ANACONDA:$GRASPTOOLS:$HOME/Codes/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$HOME/.local/bin:$PATH
    # === Python (Anaconda)
    export PYTHONPATH=$WIGXJPF/pywigxjpf:$ANACONDA/python:$PYTHONPATH
    # === Intel Compiler Env. Vars
