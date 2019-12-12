@@ -20,13 +20,15 @@ endif
 " =======
 call plug#begin('$HOME/.local/share//nvim/plugged')
 
-Plug 'morhetz/gruvbox'                   " Color schemes
+Plug 'morhetz/gruvbox'                   " Color scheme
 Plug 'vim-airline/vim-airline'           " Airline status bar
 Plug 'vim-airline/vim-airline-themes'    " Airline themes
 Plug 'sheerun/vim-polyglot'              " Language packs
 Plug 'airblade/vim-gitgutter'            " Git
 Plug 'chriskempson/base16-vim'           " UI related
-
+Plug 'tpope/vim-surround'                " Surround         - eg: ds' (delete '), cs' (change ')
+Plug 'tpope/vim-commentary'              " Commentary       - eg: gcc (comment line)
+Plug 'christoomey/vim-sort-motion'       " Sort text/objets - eg: gs2j (sort down two lines, current + 2 below), gsip (sort the current paragraph)
 Plug 'Chiel92/vim-autoformat'            " Formater
 Plug 'ncm2/ncm2'                         " Autocompletion
 Plug 'roxma/nvim-yarp'                   " Needed for ncm2

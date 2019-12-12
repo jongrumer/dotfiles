@@ -37,9 +37,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
    export SUMO_DIR="$HOME/Codes/apps/SUMO"
    source $SUMO_DIR/sumo_compilervars.sh gfortran
    # === Export main PATH
-   export PATH=$PFDIR:$JULIA:$ATSPbook:$SPHF:$SUMO_DIR:$WIGXJPF:$X2DHF:$DUO:$GRASP:$ANACONDA:$GRASPTOOLS:$HOME/Codes/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$HOME/.local/bin:$PATH
+   export PATH=$PFDIR:$JULIA:$ATSPbook:$SPHF:$SUMO_DIR:$WIGXJPF:$X2DHF:$DUO:$GRASP:$ANACONDA:$GRASPTOOLS:$HOME/Codes/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$HOME/.local/bin:/Users/jon/Library/Python/3.7/bin:$PATH
    # === Python (Anaconda)
-   export PYTHONPATH=$WIGXJPF/pywigxjpf:$ANACONDA/python:$PYTHONPATH
+   export PYTHONPATH=$WIGXJPF/pywigxjpf:$ANACONDA/python:$HOME/Library/Python/3.7/bin:$PYTHONPATH
    # === Intel Compiler Env. Vars
    source /opt/intel/bin/compilervars.sh -arch intel64 -platform mac
    source /opt/intel/compilers_and_libraries_2018.3.185/mac/mkl/bin/mklvars.sh intel64
